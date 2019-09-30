@@ -15,4 +15,25 @@ nxip = creds.nxip
 
 if __name__ == "__main__":
 
-    auth = HTTPBasicAuth()
+    auth = HTTPBasicAuth(username, password)
+    requests.packages.urllib3.disable_warnings()
+    headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    }
+    url = 'https://'+nxip+'/ins'
+
+    payload = {
+        "ins_api": {
+            "version": "1.0",
+            "type": "cli_show",
+            "chunk": "0",
+            "sid": "1",
+            "input": "sh ip int brief",
+            "output_format": "json"
+        }
+    }
+
+    response =  requests.post(url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)
+
+    print (response)
