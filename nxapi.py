@@ -29,7 +29,7 @@ if __name__ == "__main__":
             "type": "cli_show",
             "chunk": "0",
             "sid": "1",
-            "input": "sh ip int brief",
+            "input": "sh ver",
             "output_format": "json"
         }
     }
@@ -37,3 +37,7 @@ if __name__ == "__main__":
     response =  requests.post(url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)
 
     print (response)
+    result = response.text
+    result_dict = json.loads(result)
+
+    print (result_dict['ins_api']['outputs']['output']['body']['host_name'])
