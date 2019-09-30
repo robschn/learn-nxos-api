@@ -39,5 +39,5 @@ if __name__ == "__main__":
     print (response)
     result = response.text
     result_dict = json.loads(result)
-
-    print (result_dict['ins_api']['outputs']['output']['body']['host_name'])
+    result_body = result_dict['ins_api']['outputs']['output']['body']
+    print (result_body['host_name'])
