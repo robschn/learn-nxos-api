@@ -11,17 +11,19 @@ from requests.auth import HTTPBasicAuth
 import creds
 username = creds.username
 password = creds.password
-nxip = creds.nxip
+api_ip = creds.api_ip
 
 if __name__ == "__main__":
 
     auth = HTTPBasicAuth(username, password)
     requests.packages.urllib3.disable_warnings()
+
     headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     }
-    url = 'https://'+nxip+'/ins'
+
+    url = 'https://'+api_ip+'/ins'
 
     payload = {
         "ins_api": {
@@ -40,4 +42,5 @@ if __name__ == "__main__":
     result = response.text
     result_dict = json.loads(result)
     result_body = result_dict['ins_api']['outputs']['output']['body']
+
     print (result_body['host_name'])
