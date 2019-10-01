@@ -6,6 +6,7 @@
 import json
 import requests
 from requests.auth import HTTPBasicAuth
+from requests.packages import urllib3
 
 # import creds
 import creds
@@ -16,7 +17,6 @@ api_ip = creds.api_ip
 if __name__ == "__main__":
 
     auth = HTTPBasicAuth(username, password)
-    requests.packages.urllib3.disable_warnings()
 
     headers = {
         'Content-Type': 'application/json',
@@ -36,7 +36,9 @@ if __name__ == "__main__":
         }
     }
 
-    response =  requests.post(url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)
+
+    urllib3.disable_warnings()
+    response = requests.post(url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)
 
     print (response)
     result = response.text
