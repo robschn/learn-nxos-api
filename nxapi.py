@@ -6,7 +6,7 @@
 import json
 import requests
 from requests.auth import HTTPBasicAuth
-from requests.packages import urllib3
+from urllib3 import disable_warnings
 
 # import creds
 import creds
@@ -37,12 +37,10 @@ if __name__ == "__main__":
     }
 
 
-    urllib3.disable_warnings()
+    disable_warnings()
     response = requests.post(url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)
 
-    print (response)
-    result = response.text
-    result_dict = json.loads(result)
-    result_body = result_dict['ins_api']['outputs']['output']['body']
+    result = json.loads(response.text)
+    result_body = result['ins_api']['outputs']['output']['body']
 
     print (result_body['host_name'])
