@@ -47,6 +47,8 @@ if __name__ == "__main__":
     response = requests.post(url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)
 
     result = json.loads(response.text)
+
+    # isolate just the body tag
     result_body = result['ins_api']['outputs']['output']['body']
 
     print(result_body['host_name'])
