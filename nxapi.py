@@ -44,3 +44,5 @@ if __name__ == "__main__":
     result_body = result['ins_api']['outputs']['output']['body']
 
     print (result_body['host_name'])
+
+    test
