@@ -9,10 +9,14 @@ from requests.auth import HTTPBasicAuth
 from urllib3 import disable_warnings
 
 # import creds
+import sys
 import creds
+sys.path.append("..")
+
+# definitions
 username = creds.username
 password = creds.password
-api_ip = creds.api_ip
+ip_address = creds.ip_address
 
 if __name__ == "__main__":
 
@@ -23,7 +27,7 @@ if __name__ == "__main__":
         'Accept': 'application/json'
     }
 
-    url = 'https://'+api_ip+'/ins'
+    url = 'https://'+ip_address+'/ins'
 
     payload = {
         "ins_api": {
@@ -44,5 +48,3 @@ if __name__ == "__main__":
     result_body = result['ins_api']['outputs']['output']['body']
 
     print(result_body['host_name'])
-
-    print("Test")
