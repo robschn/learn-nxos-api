@@ -46,5 +46,5 @@ if __name__ == "__main__":
 
     result = json.loads(response.text)
     result_body = result['ins_api']['outputs']['output']['body']
-
+ss
     print(result_body['host_name'])
