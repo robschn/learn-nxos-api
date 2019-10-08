@@ -11,6 +11,8 @@ from urllib3 import disable_warnings
 # import creds
 import sys
 import creds
+
+# change file path to use creds.py
 sys.path.append("..")
 
 # definitions
