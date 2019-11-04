@@ -21,7 +21,6 @@ password = creds.password
 ip_address = creds.ip_address
 
 if __name__ == "__main__":
-
     auth = HTTPBasicAuth(username, password)
 
     headers = {
@@ -29,7 +28,7 @@ if __name__ == "__main__":
         'Accept': 'application/json'
     }
 
-    url = 'https://'+ip_address+'/ins'
+    url = 'https://' + ip_address + '/ins'
 
     payload = {
         "ins_api": {
@@ -41,7 +40,6 @@ if __name__ == "__main__":
             "output_format": "json"
         }
     }
-
 
     disable_warnings()
     response = requests.post(url, data=json.dumps(payload), headers=headers, auth=auth, verify=False)
